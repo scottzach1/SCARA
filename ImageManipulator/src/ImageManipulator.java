@@ -12,8 +12,12 @@ public class ImageManipulator {
     int[][] imageData;
     Boolean gui;
     int max;
+    ArmController controller;
 
-    public ImageManipulator() { this.gui = false; }
+    public ImageManipulator() {
+        this.gui = false;
+        this.controller = new ArmController();
+    }
 
     public void setupGUI() {
         UI.initialise();
@@ -21,6 +25,9 @@ public class ImageManipulator {
         UI.addButton("Render Image", ()-> this.renderImage(15, 15, 1));
         UI.addButton("Render Data", ()-> this.renderData(15, 15, 1));
         UI.addButton("Edges", ()-> this.edgeDetection(100));
+        UI.addButton("Load to Canny", ()-> controller.loadCannyMap(imageData));
+        UI.addButton("Canny to Instructions", ()-> controller.cannyToInstructions(5, 100));
+        UI.addButton("Print Instructions", ()-> controller.printCanny());
         UI.addButton("Quit", UI::quit);
         UI.setDivider(0.5);
         gui = true;

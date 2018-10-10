@@ -24,16 +24,20 @@ public class ArmController {
         else if (dir.startsWith("Bot")) r++;
         if (dir.startsWith("Lef")) c--;
         else if (dir.startsWith("Rig")) c++;
-
-
+        cannyMap[row][col] = -1;
         if (Math.sqrt(Math.pow(startCol-col,2) + Math.pow(startRow-row,2)) < precision) {
             if(cannyMap[row+r][col+c] > thr) {
                 cannyEraseGrid(row, col); // Been here now.
-                cannyRecursiveTrace(startRow, startCol, row+r, col+c, precision, thr);
+                Instruction instruction = cannyRecursiveTrace(startRow, startCol, row+r, col+c, precision, thr);
+                if (instruction != null) return instruction;
             }
         }
 
         return new Instruction(startCol, startRow, col, row);
+    }
+
+    public void printCanny() {
+        while (!instructions.isEmpty()) System.out.print(instructions.poll());
     }
 
     /** Erases all touching pixels */
@@ -50,15 +54,15 @@ public class ArmController {
      * **/
     private String findGreatestNeighbour(int row, int col) {
         String max = ""; int maxVal = 0;
-        if (cannyMap[row - 1][col-1] > maxVal) max = "TopLef";
-        if (cannyMap[row - 1][col] > maxVal) max = "TopMid";
-        if (cannyMap[row - 1][col+1] > maxVal) max = "TopRig";
-        if (cannyMap[row][col - 1] > maxVal) max = "MidLef";
+        if (row > 0 && col > 0) if (cannyMap[row - 1][col-1] > maxVal) max = "TopLef";
+        if (row > 0) if (cannyMap[row - 1][col] > maxVal) max = "TopMid";
+        if (row > 0 && col < cannyMap[row].length) if (cannyMap[row - 1][col+1] > maxVal) max = "TopRig";
+        if (col > 0) if (cannyMap[row][col - 1] > maxVal) max = "MidLef";
 //        if (cannyMap[row][col] > maxVal) max = "MidMid"; // Uneeded :P
-        if (cannyMap[row][col + 1] > maxVal) max = "MidRig";
-        if (cannyMap[row - 1][col - 1] > maxVal) max = "BotLef";
-        if (cannyMap[row - 1][col] > maxVal) max = "BotMid";
-        if (cannyMap[row - 1][col + 1] > maxVal) max = "BotRig";
+        if (col < cannyMap[row].length) if (cannyMap[row][col + 1] > maxVal) max = "MidRig";
+        if (row < cannyMap.length - 1 && col > 0) if (cannyMap[row + 1][col - 1] > maxVal) max = "BotLef";
+        if (row < cannyMap.length - 1) if (cannyMap[row + 1][col] > maxVal) max = "BotMid";
+        if (row < cannyMap.length - 1 && col < cannyMap[row].length) if (cannyMap[row + 1][col + 1] > maxVal) max = "BotRig";
         return max;
     }
 }
