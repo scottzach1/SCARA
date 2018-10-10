@@ -1,25 +1,29 @@
 import ecs100.UI;
 import ecs100.UIFileChooser;
-
 import java.awt.*;
 import java.io.File;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ImageManipulator {
 
-    int rows, cols, maxColor, PX_SIZE, LEFT, TOP;
+    int rows, cols, maxColor;
     Color[][] image;
+    int[][] imageData;
     Boolean gui;
+    int max;
 
     public ImageManipulator() { this.gui = false; }
 
     public void setupGUI() {
         UI.initialise();
         UI.addButton("Load Image", ()-> this.loadImage(UIFileChooser.open()));
-        UI.addButton("Render Image", this::renderImage);
+        UI.addButton("Render Image", ()-> this.renderImage(15, 15, 1));
+        UI.addButton("Render Data", ()-> this.renderData(15, 15, 1));
+        UI.addButton("Edges", ()-> this.edgeDetection(100));
+        UI.addButton("Quit", UI::quit);
+        UI.setDivider(0.5);
         gui = true;
-        PX_SIZE = 1;
-        LEFT = 15; TOP = 15;
     }
 
     /** Slave for LoadImage method, @param Scanner, will return -1 if no +ve int was found.*/
@@ -48,6 +52,7 @@ public class ImageManipulator {
             cols = getNextScannerInt(sc);
             rows = getNextScannerInt(sc);
             image = new Color[rows][cols];
+            imageData = new int[rows][cols];
             maxColor = getNextScannerInt(sc);
 
             for (int row = 0; row < rows; row++)
@@ -66,7 +71,56 @@ public class ImageManipulator {
         return false; // If Exception occured.
     }
 
-    public void renderImage() {
+    public void edgeDetection(int thr) {
+        int[][] verticalEdges = edgeDetectionSlave(true, thr);
+        int[][] horizontalEdges = edgeDetectionSlave(false, thr);
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                imageData[row][col] = (int) Math.sqrt(Math.pow(verticalEdges[row][col],2) + Math.pow(horizontalEdges[row][col], 2));
+                if (imageData[row][col] > max) max = imageData[row][col];
+            }
+        }
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+//                imageData[row][col] = (int) ((1.0 * imageData[row][col] / max) * 255); // Normalise Data
+//                if (imageData[row][col] > 150) imageData[row][col]+=50;               // Amplify Peaks
+                if (imageData[row][col] > 255) imageData[row][col] = 255;               // Trim > 255
+            }
+        }
+    }
+    private int[][] edgeDetectionSlave(boolean vertical, int thr) {
+        
+        int[][] sobel, output = new int[rows][cols];
+
+        if(vertical) sobel = new int[][]{{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+        else sobel = new int[][]{{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
+
+        for (int row = 1; row < rows - 1; row++) {
+            for (int col = 1; col < cols - 1; col++) {
+
+                int[][] newSobel = new int[sobel.length][sobel[0].length];
+
+                for (int r = 0; r < 3; r++)
+                    for (int c = 0; c < 3; c++)
+                        newSobel[r][c] = sobel[r][c] * getLuminocityFromColor(image[row - 1 + r][col - 1 + c]);
+
+                int sum = 0;
+                for (int[] r : newSobel) for (int c : r) sum += c; // For every value of every cell add to total
+                if (sum > thr) output[row][col] = sum;
+            }
+        }
+        return output;
+    }
+
+    private int getLuminocityFromColor(Color c) {
+//        https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
+//        (0.2126*R + 0.7152*G + 0.0722*B)
+        return (int) (c.getRed()*0.2126 + c.getGreen()*0.7152 + c.getBlue()*0.0722);
+    }
+
+    private void renderImage(int left, int top, int pxSize) {
         if (!gui || image == null) return;
         UI.clearGraphics();
         UI.setImmediateRepaint(false);
@@ -74,16 +128,31 @@ public class ImageManipulator {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 UI.setColor(image[row][col]);
-                UI.fillRect(LEFT + col * PX_SIZE, TOP + row * PX_SIZE, PX_SIZE, PX_SIZE);
+                UI.fillRect(left + col * pxSize, top + row * pxSize, pxSize, pxSize);
             }
         }
+        UI.repaintGraphics();
+    }
+    private void renderData(int left, int top, int pxSize) {
+        if (!gui || image == null) return;
+        UI.clearGraphics();
+        UI.setImmediateRepaint(false);
+
+        for (int row = 0; row < rows; row++)
+            for (int col = 0; col < cols; col++)
+                if (imageData[row][col] > 255 || imageData[row][col] < 0)
+                    UI.println(row + ", " + col + " exceeds maximum value 255: " + imageData[row][col]);
+                else {
+                    int intensity = imageData[row][col];
+                    UI.setColor(new Color(intensity, intensity, intensity));
+                    UI.fillRect(left + col * pxSize, top + row * pxSize, pxSize, pxSize);
+                }
 
         UI.repaintGraphics();
     }
-    
+
     public static void main(String[] arguments) {
         ImageManipulator im = new ImageManipulator();
         im.setupGUI();
-        return;
     }
 }
