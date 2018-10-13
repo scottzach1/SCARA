@@ -1,7 +1,11 @@
 import ecs100.UI;
 import ecs100.UIFileChooser;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -21,6 +25,7 @@ public class ImageManipulator {
 
     public void setupGUI() {
         UI.initialise();
+        UI.addButton("Load PPM", ()-> this.loadPPM(UIFileChooser.open()));
         UI.addButton("Load Image", ()-> this.loadImage(UIFileChooser.open()));
         UI.addButton("Render Image", ()-> this.renderImage(15, 15, 1));
         UI.addButton("Render Data", ()-> this.renderData(15, 15, 1));
@@ -51,7 +56,7 @@ public class ImageManipulator {
         return new Color(r, g, b);
     }
 
-    public boolean loadImage(String fName) {
+    public boolean loadPPM(String fName) {
         try {
             Scanner sc = new Scanner(new File(fName));
             if (!sc.next().equals("P3")) { UI.println("Invalid Image Type."); return false; }
@@ -76,6 +81,28 @@ public class ImageManipulator {
             System.out.println("Exception " + e);
         }
         return false; // If Exception occured.
+    }
+    public boolean loadImage(String fname) {
+        try {
+            BufferedImage img = ImageIO.read(new File(fname));
+            rows = img.getHeight();
+            cols = img.getWidth();
+            image = new Color[rows][cols];
+            imageData = new int[rows][cols];
+
+            for (int row = 0; row < image.length; row++)
+                for (int col = 0; col < image[row].length; col++)
+                    image[row][col] = new Color(img.getRGB(col, row));
+
+            if(gui) UI.printf("%dx%d image loaded successfully\n", rows, cols);
+            System.out.printf("%dx%d image loaded successfully\n", rows, cols);
+
+            return true;
+
+        } catch (Exception e) {
+            if(gui) UI.println("Exception " + e);
+        }
+        return false;
     }
 
     public void edgeDetection(int thr) {
