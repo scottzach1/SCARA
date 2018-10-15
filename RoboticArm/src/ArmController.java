@@ -34,18 +34,19 @@ public class ArmController {
 
         // Motor 1:
 
-        double distanceX1 = tool.x - leftMotor.x;
-        double distanceY1 = tool.y - leftMotor.y;
+        Cord distance1 = new Cord(tool.x - leftMotor.x, tool.y - leftMotor.y);
+//        double distanceX1 = tool.x - leftMotor.x;
+//        double distanceY1 = tool.y - leftMotor.y;
 
         Cord a = new Cord((tool.x + leftMotor.x)/2, (tool.y + leftMotor.y)/2);
 //        double xA, yA;
 //        xA = (tool.x + leftMotor.x)/2;
 //        yA = (tool.y + leftMotor.y)/2;
 
-        double distance1 = Math.sqrt(Math.pow(distanceX1,2) + Math.pow(distanceY1,2));
-        double h1 = Math.sqrt(Math.pow(radius,2) - Math.pow(distance1/2, 2));
+//        double distance1 = Math.sqrt(Math.pow(distanceX1,2) + Math.pow(distanceY1,2)); // Can be achieved with distance1.getDistance()
+        double h1 = Math.sqrt(Math.pow(radius,2) - Math.pow(distance1.getDistance()/2, 2));
 
-        angle = Math.atan2(distanceY1, distanceX1);
+        angle = Math.atan2(distance1.y, distance1.x);
 
         Cord joint1 = new Cord(a.x + h1*Math.sin(angle), a.y - h1*Math.cos(angle));
 //        double xJoint1 = a.x + h1*Math.sin(angle);
