@@ -1,115 +1,134 @@
-public class ArmController {
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-    private double thetaLeft, thetaRight;
+public class ArmController {
 
     // Calibration
 
-    private double radius = 517 - 273;
+    private double radius = 261;
 
-    private Cord motorPoint1 = new Cord(1300, 1400);
-    private Cord thetaPoint1 = new Cord(130, 70);
+    double motor1Point1 = 1300, thetaMotor1Point1 = 135;
+    double motor1Point2 = 1700, thetaMotor1Point2 = 98;
 
-    private Cord motorPoint2 = new Cord(1500, 1600);
-    private Cord thetaPoint2 = new Cord(128, 54);
+    double motor2Point1 = 1300, thetaMotor2Point1 = 87;
+    double motor2Point2 = 1700, thetaMotor2Point2 = 50;
 
-    private Cord leftMotor = new Cord(312.0, 472.0);
-    private Cord rightMotor = new Cord(439.0, 476.0);
-
-    // PWM Fields:
+    private Cord leftMotor = new Cord(220, 500);
+    private Cord rightMotor = new Cord(390, 500);
 
     public ArmController() {
 
-//        drawCircle(320, 240, 20, 150);
-//        drawHorizontalLine(240, 240, 320);
+//        double x = 295;
+//        double y = 142;
+//
+//        double thetaLeft = calculateThetaLeft(x, y);
+//        double thetaRight = calculateThetaRight(x, y);
+//
+//        thetaLeft = Math.toDegrees(thetaLeft);
+//        thetaRight = Math.toDegrees(thetaRight);
+//
+//        System.out.println(thetaLeft);
+//        System.out.println(thetaRight);
+//
+//        System.out.println(calculatePWMMotor1(thetaLeft));
+//        System.out.println(calculatePWMMotor2(thetaRight));
 
-        calculateMotorSignal(400, 240);
-//        printData();
+        drawHorizontalLine(240, 340, 240);
 
-    }
-
-    public void calculateTheta(double toolX, double toolY) {
-        Cord tool = new Cord(toolX, toolY);
-
-        double angle;
-
-        // Motor 1:
-
-        Cord distance1 = new Cord(tool.x - leftMotor.x, tool.y - leftMotor.y);
-//        double distanceX1 = tool.x - leftMotor.x;
-//        double distanceY1 = tool.y - leftMotor.y;
-
-        Cord a = new Cord((tool.x + leftMotor.x)/2, (tool.y + leftMotor.y)/2);
-//        double xA, yA;
-//        xA = (tool.x + leftMotor.x)/2;
-//        yA = (tool.y + leftMotor.y)/2;
-
-//        double distance1 = Math.sqrt(Math.pow(distanceX1,2) + Math.pow(distanceY1,2)); // Can be achieved with distance1.getDistance()
-        double h1 = Math.sqrt(Math.pow(radius,2) - Math.pow(distance1.getDistance()/2, 2));
-
-        angle = Math.atan2(distance1.y, distance1.x);
-
-        Cord joint1 = new Cord(a.x + h1*Math.sin(angle), a.y - h1*Math.cos(angle));
-//        double xJoint1 = a.x + h1*Math.sin(angle);
-//        double yJoint1 = a.y - h1*Math.cos(angle);
-
-        thetaLeft = Math.PI/2 - Math.atan2(joint1.x - leftMotor.x, leftMotor.y - joint1.y);
-
-        // Motor 2:
-
-        Cord distance2 = new Cord(tool.x - rightMotor.x, tool.y - rightMotor.y);
-//        double distanceX2 = tool.x - rightMotor.x;
-//        double distanceY2 = tool.y - rightMotor.y;
-
-        a.x = (tool.x + rightMotor.x)/2;
-        a.y = (tool.y + rightMotor.y)/2;
-
-//        double distance2 = Math.sqrt(Math.pow(distanceX2,2) + Math.pow(distanceY2,2)); // Can be achieved with distance2.getDistance()
-        double h2 = Math.sqrt(Math.pow(radius,2) - Math.pow(distance2.getDistance()/2, 2));
-
-        angle = Math.atan2(distance2.y, distance2.x);
-
-        Cord joint2 = new Cord(a.x - h2*Math.sin(angle), a.y + h2*Math.cos(angle));
-//        double xJoint2 = a.x - h2*Math.sin(angle);
-//        double yJoint2 = a.y + h2*Math.cos(angle);
-
-        thetaRight = Math.PI/2 - Math.atan2(joint2.x - rightMotor.x, rightMotor.y - joint2.y);
-
-        // Output:
-
-        System.out.println("xJoint1: " + joint1.x);
-        System.out.println("yJoint1: " + joint1.y);
-
-        System.out.println("xJoint2: " + joint2.x);
-        System.out.println("yJoint2: " + joint2.y);
 
     }
 
-    /** Use theta calculated in calculateTheta and convert this into PWM */
-    public void calculateMotorSignal(double x, double y) {
+    public double calculateThetaLeft(double toolX, double toolY) {
 
-        double gradient;
+        Cord tool, distance, midpoint, joint;
+        double h, angle, theta;
 
-        calculateTheta(x, y);
+        tool = new Cord(toolX, toolY);
+        distance = new Cord(tool.x - leftMotor.x, tool.y - leftMotor.y);
+        midpoint = new Cord((tool.x + leftMotor.x)/2, (tool.y + leftMotor.y)/2);
 
-        thetaLeft = Math.toDegrees(thetaLeft);
-        thetaRight = Math.toDegrees(thetaRight);
+        h = Math.sqrt(Math.pow(radius,2) - Math.pow(distance.getDistance()/2, 2));
+        angle = Math.atan2(distance.y, distance.x);
 
-        System.out.println("thetaLeft: " + thetaLeft);
-        System.out.println("thetaRight: " + thetaRight);
+        joint = new Cord(midpoint.x + h * Math.sin(angle), midpoint.y - h * Math.cos(angle));
 
-        gradient = (motorPoint2.x - motorPoint1.x)/(thetaPoint2.x - thetaPoint1.x);
-        System.out.println("g: "  + gradient);
-        double pwmL = motorPoint1.x + (thetaLeft - thetaPoint1.x) * gradient;
+        theta = Math.PI/2 - Math.atan2(joint.x - leftMotor.x, leftMotor.y - joint.y);
 
-        gradient = (motorPoint2.y - motorPoint1.y)/(thetaPoint2.y - thetaPoint1.y);
-        System.out.println("g: "  + gradient);
-        double pwmR = motorPoint1.y + (thetaRight - thetaPoint1.y) * gradient;
+        return theta;
 
-        System.out.println();
-        System.out.println("PWM Left: " + pwmL);
-        System.out.println("PWM Right: " + pwmR);
+    }
+
+    public double calculateThetaRight(double toolX, double toolY) {
+
+        Cord tool, distance, midpoint, joint;
+
+        double h, angle, theta;
+
+        tool = new Cord(toolX, toolY);
+        distance = new Cord(tool.x - rightMotor.x, tool.y - rightMotor.y);
+        midpoint = new Cord((tool.x + rightMotor.x)/2, (tool.y + rightMotor.y)/2);
+
+        h = Math.sqrt(Math.pow(radius,2) - Math.pow(distance.getDistance()/2, 2));
+        angle = Math.atan2(distance.y, distance.x);
+
+        joint = new Cord(midpoint.x - h * Math.sin(angle), midpoint.y + h * Math.cos(angle));
+
+        theta = Math.PI/2 - Math.atan2(joint.x - rightMotor.x, rightMotor.y - joint.y);
+
+        return theta;
+
+    }
+
+    private double calculatePWMMotor1(double angle){
+
+        double pwm1 = motor1Point1 + ((angle-thetaMotor1Point1)*(motor1Point2-motor1Point1)/(thetaMotor1Point2-thetaMotor1Point1));
+
+//        System.out.println(pwm1);
+
+        return pwm1;
+
+    }
+
+    private double calculatePWMMotor2(double angle){
+
+        double pwm2 = motor2Point1 + ((angle-thetaMotor2Point1)*(motor2Point2-motor2Point1)/(thetaMotor2Point2-thetaMotor2Point1));
+
+//        System.out.println(pwm2);
+
+        return pwm2;
+
+    }
+
+    /////////////////////////////////////////////////////
+
+    public void drawHorizontalLine(double startX, double endX, double y) {
+
+        try {
+
+            PrintWriter writer = new PrintWriter(new File("drawHorizontalLine.txt"));
+
+            for (double x = startX; x < endX; x+=2) {
+
+                double thetaLeft = Math.toDegrees(calculateThetaLeft(x, y));
+                double thetaRight = Math.toDegrees(calculateThetaRight(x, y));
+
+                double pwmLeft = calculatePWMMotor1(thetaLeft);
+                double pwmRight = calculatePWMMotor2(thetaRight);
+
+                System.out.println(Math.round(pwmLeft) + "," + Math.round(pwmRight) + ",1500");
+
+                writer.println(Math.round(pwmLeft) + "," + Math.round(pwmRight) + ",1500");
+                writer.flush();
+
+            }
+
+        } catch (IOException e ) {
+            System.out.println("ERROR: " + e);
+        }
 
     }
 
     public static void main(String[] args) { new ArmController(); }
+
 }

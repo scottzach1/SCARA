@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c1d9639-47c6-452c-8f8f-477986ece7ee" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ArmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cord.java" afterDir="false" />
-    </list>
+    <list default="true" id="9c1d9639-47c6-452c-8f8f-477986ece7ee" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +16,7 @@
     <session id="2131399363">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -54,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ArmController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="146">
+              <caret line="74" column="80" lean-forward="true" selection-start-line="74" selection-start-column="80" selection-end-line="74" selection-end-column="80" />
               <folding>
                 <element signature="e#741#781#0" />
                 <element signature="e#981#1005#0" />
@@ -179,7 +177,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539606354786" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539606397417" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -270,12 +268,12 @@
       <workItem from="1539566558248" duration="23000" />
       <workItem from="1539566763511" duration="1914000" />
       <workItem from="1539568839616" duration="5746000" />
-      <workItem from="1539602945488" duration="3390000" />
+      <workItem from="1539602945488" duration="3481000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39918000" />
+    <option name="totallyTimeSpent" value="40009000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3832" y="559" width="2576" height="1056" extended-state="6" />
@@ -363,8 +361,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArmController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="146">
+          <caret line="74" column="80" lean-forward="true" selection-start-line="74" selection-start-column="80" selection-end-line="74" selection-end-column="80" />
           <folding>
             <element signature="e#741#781#0" />
             <element signature="e#981#1005#0" />
