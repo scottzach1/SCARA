@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/scara.iml" filepath="$PROJECT_DIR$/.idea/scara.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RoboticArm.iml" filepath="$PROJECT_DIR$/RoboticArm.iml" />
     </modules>
   </component>
 </project>
