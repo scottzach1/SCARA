@@ -24,6 +24,7 @@
     <session id="1331535318">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -42,12 +43,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5050" />
+          <entry key="java" value="5548" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5050" />
+          <entry key="JAVA" value="5548" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -63,8 +64,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ImageManipulator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="349">
-                  <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+                <state relative-caret-position="1026">
+                  <caret line="66" column="91" lean-forward="true" selection-start-line="66" selection-start-column="91" selection-end-line="66" selection-end-column="91" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#getNextScannerInt#0;class#ImageManipulator#0" />
@@ -75,6 +76,7 @@
                     <element signature="method#renderImage#0;class#ImageManipulator#0" />
                     <element signature="method#renderData#0;class#ImageManipulator#0" />
                     <element signature="method#getInstructions#0;class#ImageManipulator#0" />
+                    <marker date="1539669248425" expanded="true" signature="1443:1733" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -87,8 +89,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ArmController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="211">
-                  <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+                <state relative-caret-position="346">
+                  <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
                   <folding>
                     <element signature="method#calibrate#0;class#ArmController#0" />
                     <element signature="method#calculateThetaLeft#0;class#ArmController#0" />
@@ -136,6 +138,7 @@
     <findStrings>
       <find>max</find>
       <find>259</find>
+      <find>Scanner</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,8 +152,8 @@
         <option value="$PROJECT_DIR$/src/Cord.java" />
         <option value="$PROJECT_DIR$/src/Instruction.java" />
         <option value="$PROJECT_DIR$/src/CannyTracer.java" />
-        <option value="$PROJECT_DIR$/src/ArmController.java" />
         <option value="$PROJECT_DIR$/src/ImageManipulator.java" />
+        <option value="$PROJECT_DIR$/src/ArmController.java" />
       </list>
     </option>
   </component>
@@ -161,8 +164,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="3832" />
-    <option name="y" value="559" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="2576" />
     <option name="height" value="1056" />
   </component>
@@ -197,8 +200,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539668018793" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ImageManipulator" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539669355048" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -242,12 +245,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539657089428</updated>
-      <workItem from="1539657090688" duration="10796000" />
+      <workItem from="1539657090688" duration="12639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10796000" />
+    <option name="totallyTimeSpent" value="12639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3832" y="559" width="2576" height="1056" extended-state="6" />
@@ -258,16 +261,16 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.0969023" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0969023" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Messages" weight="0.32930845" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15587267" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.15587267" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -394,8 +397,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArmController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+        <state relative-caret-position="346">
+          <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           <folding>
             <element signature="method#calibrate#0;class#ArmController#0" />
             <element signature="method#calculateThetaLeft#0;class#ArmController#0" />
@@ -414,8 +417,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ImageManipulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+        <state relative-caret-position="1026">
+          <caret line="66" column="91" lean-forward="true" selection-start-line="66" selection-start-column="91" selection-end-line="66" selection-end-column="91" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNextScannerInt#0;class#ImageManipulator#0" />
@@ -426,6 +429,7 @@
             <element signature="method#renderImage#0;class#ImageManipulator#0" />
             <element signature="method#renderData#0;class#ImageManipulator#0" />
             <element signature="method#getInstructions#0;class#ImageManipulator#0" />
+            <marker date="1539669248425" expanded="true" signature="1443:1733" ph="..." />
           </folding>
         </state>
       </provider>

@@ -22,7 +22,7 @@ public class ArmController {
     private Cord leftMotor = new Cord(231, 480);
     private Cord rightMotor = new Cord(363, 480);
 
-    private boolean debug = false, console = false, output = false, gui = false;
+    private boolean debug = false, console = false, output = true, gui = false;
     private int penHeight = 1300;
 
     private ImageManipulator imageManipulator;
@@ -50,29 +50,54 @@ public class ArmController {
         UI.initialise();
         UI.addButton("Load Image", imageManipulator::loadData);
         UI.addButton("Render Image", ()-> imageManipulator.renderImage(15, 15, 1));
-        UI.addButton("Edges", ()-> imageManipulator.edgeDetection(100));
+        UI.addButton("Run Edge Detection", ()-> imageManipulator.edgeDetection(100));
         UI.addButton("Render Data", ()-> imageManipulator.renderData(15, 15, 1));
-        UI.addButton("Draw", imageManipulator::getInstructions);
-        UI.addButton("Output", ()-> fName = UIFileChooser.save());
+        UI.addButton("Draw Image", imageManipulator::getInstructions);
+        UI.addButton("Set Output File", ()-> fName = UIFileChooser.save());
+
+        UI.addButton("Check Motor Calibration", this::calibrate);
+        UI.addButton("Draw Circle", this::selectCircle);
+        UI.addButton("Draw Rectangle", this::selectRectangle);
+        UI.addButton("Draw line", this::selectLine);
         UI.addButton("Quit", UI::quit);
         if (this.console) UI.setDivider(0.5);
         else UI.setDivider(0);
     }
 
+    /** Output the current calibration data */
     public void calibrate() {
+
         double x = 320;
         double y = 100;
 
         double thetaLeft = calculateThetaLeft(x, y);
         double thetaRight = calculateThetaRight(x, y);
 
-        System.out.println(radius);
+        if (gui) {
 
-        System.out.println(thetaLeft);
-        System.out.println(thetaRight);
+            UI.println("------------------------------------------------------------------------");
+            UI.println("Results for tool at:  x = " + x + " and y = " + y);
 
-        System.out.println(calculatePWMMotor1(thetaLeft));
-        System.out.println(calculatePWMMotor2(thetaRight));
+            UI.println("Radius: " + radius);
+
+            UI.println("Theta left (degrees): " + thetaLeft);
+            UI.println("Theta right (degrees): " + thetaRight);
+
+            UI.println("PWM left: " + calculatePWMMotor1(thetaLeft));
+            UI.println("PWM right: " + calculatePWMMotor2(thetaRight));
+
+            UI.println("------------------------------------------------------------------------");
+
+        } else if (debug) {
+            System.out.println("Radius: " + radius);
+
+            System.out.println("Theta left (degrees): " + thetaLeft);
+            System.out.println("Theta right (degrees): " + thetaRight);
+
+            System.out.println("PWM left: " + calculatePWMMotor1(thetaLeft));
+            System.out.println("PWM right: " + calculatePWMMotor2(thetaRight));
+        }
+
     }
 
     /** Calculate the value of theta for each motor */
@@ -119,6 +144,64 @@ public class ArmController {
     /** Calculate the PWM values for each motor given an angle */
     private double calculatePWMMotor1(double angle){ return motor1Point1 + ((angle-thetaMotor1Point1)*(motor1Point2-motor1Point1)/(thetaMotor1Point2-thetaMotor1Point1)); }
     private double calculatePWMMotor2(double angle){ return motor2Point1 + ((angle-thetaMotor2Point1)*(motor2Point2-motor2Point1)/(thetaMotor2Point2-thetaMotor2Point1)); }
+
+    /** Allows the user to enter custom circle dimensions/position */
+    public void selectCircle() {
+
+        if (gui) {
+            double x = UI.askInt("Enter the x position of the circle center: ");
+            double y = UI.askInt("Enter the y position of the circle center: ");
+            double radius = UI.askInt("Enter the circle radius: ");
+            double accuracy = UI.askInt("Enter the desired step count: ");
+
+            Cord circlePos = new Cord(x, y);
+
+            drawCircle(circlePos, radius, accuracy);
+
+            UI.println("Outputted file to: " + fName);
+        }
+
+    }
+
+    /** Allows the user to enter custom rectangle dimensions/position */
+    public void selectRectangle() {
+
+        if (gui) {
+            double x1 = UI.askInt("Enter the x position of the top left corner: ");
+            double y1 = UI.askInt("Enter the y position of the top left corner: ");
+
+            double x2 = UI.askInt("Enter the x position of the bottom right corner: ");
+            double y2 = UI.askInt("Enter the y position of the bottom right corner: ");
+
+            Cord topLeft = new Cord(x1, y1);
+            Cord bottomRight = new Cord(x2, y2);
+
+            drawRectangle(topLeft, bottomRight);
+
+            UI.println("Outputted file to: " + fName);
+        }
+
+    }
+
+    /** Allows the user to enter custom line positions */
+    public void selectLine() {
+
+        if (gui) {
+            double x1 = UI.askInt("Enter the x position of the start point: ");
+            double y1 = UI.askInt("Enter the y position of the start point: ");
+
+            double x2 = UI.askInt("Enter the x position of the end point: ");
+            double y2 = UI.askInt("Enter the y position of the end point: ");
+
+            Cord start = new Cord(x1, y1);
+            Cord end = new Cord(x2, y2);
+
+            drawLine(start, end);
+
+            UI.println("Outputted file to: " + fName);
+        }
+
+    }
 
     /** Draw a horizontal line */
     public void drawHorizontalLine(double startX, double endX, double y) {
