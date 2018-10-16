@@ -23,6 +23,20 @@ public class Cord {
         other.x = holder.x; other.y = holder.y;
     }
 
+    /** Switch x */
+    public void swapX(Cord other) {
+        double holder = this.x;
+        this.x = other.x;
+        other.x = holder;
+    }
+
+    /** Switch Y */
+    public void swapY(Cord other) {
+        double holder = this.y;
+        this.y = other.y;
+        other.y = holder;
+    }
+
     /** Returns Pythagoras Distance, c = root (a^2 + b^2) */
     public double getDistance() {
         return Math.sqrt(x*x + y*y);
