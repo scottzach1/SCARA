@@ -3,10 +3,54 @@
   <component name="ChangeListManager">
     <list default="true" id="8de88197-2230-4313-b281-5a73fd9f5102" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/ArmController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/ArmController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/CannyTracer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/CannyTracer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/Cord.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/Cord.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/ImageManipulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/ImageManipulator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/.idea/Project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/angles.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/ecs100.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/imageScaled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/img/1-image-bee.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/img/1-image-crane.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/img/1-image-flower.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/img/1-image-fly.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/img/1-image-rose.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/img/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/img/imageProcessed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/img/imageScaled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/instructions.scara" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/moni" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/.idea/Project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/ecs100.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/1-image-bee.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/1-image-crane.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/1-image-flower.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/1-image-fly.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/1-image-rose.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/imageProcessed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/imageScaled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/moni" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/ecs100.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/1-image-bee.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/1-image-crane.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/1-image-flower.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/1-image-fly.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/1-image-rose.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/imageProcessed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/imageScaled.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/src/ArmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/src/ArmController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/src/CannyTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/src/CannyTracer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/src/Cord.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/src/Cord.java" afterDir="false" />
@@ -61,11 +105,11 @@
     <session id="-1351219391">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -82,12 +126,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6111" />
+          <entry key="java" value="6241" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6111" />
+          <entry key="JAVA" value="6241" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
@@ -103,7 +147,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ArmController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="113">
+                <state relative-caret-position="1219">
                   <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
                 </state>
               </provider>
@@ -112,8 +156,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/CannyTracer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="337">
-                  <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+                <state relative-caret-position="360">
+                  <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -124,11 +168,11 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Cord.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="533">
+                <state relative-caret-position="1058">
                   <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
                 </state>
               </provider>
@@ -171,6 +215,7 @@
       <find>top</find>
       <find>circle</find>
       <find>calib</find>
+      <find>for (int )</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -281,11 +326,12 @@
       <workItem from="1539730787498" duration="7870000" />
       <workItem from="1539738774290" duration="967000" />
       <workItem from="1539742355096" duration="15985000" />
+      <workItem from="1539760725225" duration="316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37493000" />
+    <option name="totallyTimeSpent" value="37809000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
@@ -300,7 +346,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28100988" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" weight="0.28100988" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991462" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -308,7 +354,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50039715" side_tool="true" visible="true" weight="0.32930845" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32711306" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -369,10 +415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-          <folding>
-            <element signature="e#191#192#0" expanded="true" />
-            <element signature="e#234#235#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -380,13 +422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -399,8 +434,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArmController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
+        <state relative-caret-position="1219">
           <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -420,8 +462,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CannyTracer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+        <state relative-caret-position="360">
+          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

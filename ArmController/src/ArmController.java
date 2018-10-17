@@ -52,11 +52,18 @@ public class ArmController {
         UI.initialise();
         UI.addButton("Load Image", imageManipulator::loadData);
         UI.addButton("Render Image", ()-> imageManipulator.renderImage());
-        UI.addButton("Run Edge Detection", ()-> imageManipulator.edgeDetection(100));
+        UI.addButton("Edge Detection", () -> imageManipulator.edgeDetection(200));
+        UI.addButton("Image to Data", () -> imageManipulator.imageToData());
         UI.addButton("Render Data", ()-> imageManipulator.renderData());
         UI.addButton("Draw Image", ()-> drawInstructions(imageManipulator.getInstructions(), imageManipulator.getCols(), imageManipulator.getRows()));
-//        UI.addButton("Save File", ()-> { stream.close(); UI.quit(); });
         UI.addButton("Render Instructions", ()-> imageManipulator.renderInstructions(imageManipulator.getInstructions()));
+        UI.addButton("Cheat", ()-> {
+            imageManipulator.loadImage("pixelSky.png");
+            imageManipulator.imageToData();
+//            UI.setWindowSize(1000, 500);
+//            UI.setDivider(0.25);
+            imageManipulator.renderInstructions(imageManipulator.getInstructions());
+        });
         UI.addButton("Check Motor Calibration", this::calibrate);
         UI.addButton("Draw Circle", this::selectCircle);
         UI.addButton("Draw Rectangle", this::selectRectangle);

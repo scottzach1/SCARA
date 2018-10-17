@@ -48,6 +48,7 @@ public class Cord {
     public Cord add(Cord other) {
         return new Cord (this.x + other.x, this.y + other.y);
     }
+    public Cord copy() { return  new Cord(this.x, this.y); }
 
     public String toString() {
         return this.x + " " + this.y;

@@ -14,7 +14,7 @@ public class ImageManipulator {
     private int[][] imageData;
     private Color[][] image;
     public boolean gui, console, debug;
-    public static float LEFT = 15, TOP = 15, PX_SIZE = 1;
+    public static float LEFT = 15, TOP = 15, PX_SIZE = 3;
 
     public ImageManipulator(boolean gui, boolean console) {
         this.gui = gui;
@@ -148,6 +148,14 @@ public class ImageManipulator {
         return output;
     }
 
+    public void imageToData() {
+        for (int row = 0; row < image.length; row++) {
+            for (int col = 0; col < image[row].length; col++) {
+                imageData[row][col] = 255 - getLuminosityFromColor(image[row][col]);
+            }
+        }
+    }
+
     /** Returns a luminosity / 255 given an @param color c. */
     private int getLuminosityFromColor(Color c) {
 //        https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
@@ -193,14 +201,15 @@ public class ImageManipulator {
     public void renderInstructions(Queue<Instruction> instructions) {
         UI.clearGraphics();
         UI.setImmediateRepaint(true);
-
-        UI.println("Rendering " + instructions.size() + " instructions. Hopefully this works.");
+//        UI.setDivider(0.0);
+//        UI.println("Rendering " + instructions.size() + " instructions. Hopefully this works.");
         UI.setColor(Color.black);
         UI.fillRect(LEFT, TOP, imageData[0].length*PX_SIZE, imageData.length*PX_SIZE);
         UI.setColor(Color.white);
         while(!instructions.isEmpty()) {
+            UI.setColor(new Color((int) (Math.random()*200+55), (int) (Math.random()*200+55), (int) (Math.random()*200+55)));
             Instruction instruction = instructions.poll();
-            UI.sleep(50);
+            UI.sleep(150);
             UI.drawLine(LEFT + instruction.start.x*PX_SIZE, TOP + instruction.start.y*PX_SIZE, LEFT + instruction.end.x*PX_SIZE, TOP + instruction.end.y*PX_SIZE);
         }
     }
@@ -208,8 +217,8 @@ public class ImageManipulator {
     /** Return a Queue of Instructions to draw image */
     public Queue<Instruction> getInstructions() {
         CannyTracer tracer = new CannyTracer();
-        Queue<Instruction>  instructions = tracer.getInstructions(imageData);
-        UI.println(instructions.size() + " instructions were found.");
+        Queue<Instruction>  instructions = tracer.cannyTrace(imageData);
+//        UI.println(instructions.size() + " instructions were found.");
         return instructions;
     }
 }
