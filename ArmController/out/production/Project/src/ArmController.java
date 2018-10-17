@@ -10,24 +10,26 @@ import static java.lang.Math.sin;
 import static java.lang.Math.round;
 
 public class ArmController {
+    int maxX = 420, minX = 200, rangeX = maxX - minX; // 220 Width
+    int maxY = 240, minY = 160, rangeY = maxY - minY; // 80 Height
 
-    private double radius = 425-166;
+    private double radius = 450-200;
 
-    private double motor1Point1 = 1400, thetaMotor1Point1 = 142;
-    private double motor1Point2 = 1650, thetaMotor1Point2 = 110;
+    private double motor1Point1 = 1400, thetaMotor1Point1 = 140;
+    private double motor1Point2 = 1700, thetaMotor1Point2 = 108;
 
-    private double motor2Point1 = 1400, thetaMotor2Point1 = 66;
-    private double motor2Point2 = 1650, thetaMotor2Point2 = 33;
+    private double motor2Point1 = 1400, thetaMotor2Point1 = 63;
+    private double motor2Point2 = 1700, thetaMotor2Point2 = 27;
 
-    private Cord leftMotor = new Cord(231, 480);
-    private Cord rightMotor = new Cord(363, 480);
+    private Cord leftMotor = new Cord(246, 500);
+    private Cord rightMotor = new Cord(377, 500);
 
     private boolean debug = false, console = false, output = true, gui = false;
     private int penHeight = 1300;
 
     private ImageManipulator imageManipulator;
     private PrintStream stream;
-    private String fName = "instructions.scara";
+    private String fName = "i";
 
     public ArmController() {
         setupGUI();
@@ -37,7 +39,7 @@ public class ArmController {
 
 //            drawLine(new Cord(260, 240), new Cord(380, 240));        // horizontal
 //            drawLine(new Cord(320, 100), new Cord(320, 240));        // vertical
-//            drawCircle(new Cord(320, 100), 25, 100);       // circle
+//            drawCircle(new Cord(320, 100), 25, 100);                  // circle
 //            drawRectangle(new Cord(300, 160), new Cord(400, 80));    // rectangle
 
         } catch (Exception e) { System.out.println("Error " + e); }
@@ -49,17 +51,17 @@ public class ArmController {
         imageManipulator = new ImageManipulator(gui, console);
         UI.initialise();
         UI.addButton("Load Image", imageManipulator::loadData);
-        UI.addButton("Render Image", ()-> imageManipulator.renderImage(15, 15, 1));
+        UI.addButton("Render Image", ()-> imageManipulator.renderImage());
         UI.addButton("Run Edge Detection", ()-> imageManipulator.edgeDetection(100));
-        UI.addButton("Render Data", ()-> imageManipulator.renderData(15, 15, 1));
-        UI.addButton("Draw Image", imageManipulator::getInstructions);
-        UI.addButton("Set Output File", ()-> fName = UIFileChooser.save());
-
+        UI.addButton("Render Data", ()-> imageManipulator.renderData());
+        UI.addButton("Draw Image", ()-> drawInstructions(imageManipulator.getInstructions(), imageManipulator.getCols(), imageManipulator.getRows()));
+//        UI.addButton("Save File", ()-> { stream.close(); UI.quit(); });
+        UI.addButton("Render Instructions", ()-> imageManipulator.renderInstructions(imageManipulator.getInstructions()));
         UI.addButton("Check Motor Calibration", this::calibrate);
         UI.addButton("Draw Circle", this::selectCircle);
         UI.addButton("Draw Rectangle", this::selectRectangle);
         UI.addButton("Draw line", this::selectLine);
-        UI.addButton("Quit", UI::quit);
+        UI.addButton("Save", ()-> { stream.close(); UI.quit(); });
         if (this.console) UI.setDivider(0.5);
         else UI.setDivider(0);
     }
@@ -67,8 +69,10 @@ public class ArmController {
     /** Output the current calibration data */
     public void calibrate() {
 
+        UI.setDivider(1.0);
+
         double x = 320;
-        double y = 100;
+        double y = 240;
 
         double thetaLeft = calculateThetaLeft(x, y);
         double thetaRight = calculateThetaRight(x, y);
@@ -88,15 +92,16 @@ public class ArmController {
 
             UI.println("------------------------------------------------------------------------");
 
-        } else if (debug) {
-            System.out.println("Radius: " + radius);
-
-            System.out.println("Theta left (degrees): " + thetaLeft);
-            System.out.println("Theta right (degrees): " + thetaRight);
-
-            System.out.println("PWM left: " + calculatePWMMotor1(thetaLeft));
-            System.out.println("PWM right: " + calculatePWMMotor2(thetaRight));
         }
+
+        System.out.println("Radius: " + radius);
+
+        System.out.println("Theta left (degrees): " + thetaLeft);
+        System.out.println("Theta right (degrees): " + thetaRight);
+
+        System.out.println("PWM left: " + calculatePWMMotor1(thetaLeft));
+        System.out.println("PWM right: " + calculatePWMMotor2(thetaRight));
+
 
     }
 
@@ -149,6 +154,7 @@ public class ArmController {
     public void selectCircle() {
 
         if (gui) {
+            UI.setDivider(1.0);
             double x = UI.askInt("Enter the x position of the circle center: ");
             double y = UI.askInt("Enter the y position of the circle center: ");
             double radius = UI.askInt("Enter the circle radius: ");
@@ -167,6 +173,7 @@ public class ArmController {
     public void selectRectangle() {
 
         if (gui) {
+            UI.setDivider(1.0);
             double x1 = UI.askInt("Enter the x position of the top left corner: ");
             double y1 = UI.askInt("Enter the y position of the top left corner: ");
 
@@ -187,6 +194,7 @@ public class ArmController {
     public void selectLine() {
 
         if (gui) {
+            UI.setDivider(1.0);
             double x1 = UI.askInt("Enter the x position of the start point: ");
             double y1 = UI.askInt("Enter the y position of the start point: ");
 
@@ -205,22 +213,29 @@ public class ArmController {
 
     /** Draw a horizontal line */
     public void drawHorizontalLine(double startX, double endX, double y) {
+//        double pwmLeft = calculatePWMMotor1(calculateThetaLeft(startX, y));
+//        double pwmRight = calculatePWMMotor2(calculateThetaRight(x, y));
+//        writeMotorCommand(pwmLeft, pwmRight);
+        dropPen();
         if (debug) System.out.println("drawHorizontalLine");
         for (double x = startX; x < endX; x+=2) {
             double pwmLeft = calculatePWMMotor1(calculateThetaLeft(x, y));
             double pwmRight = calculatePWMMotor2(calculateThetaRight(x, y));
             writeMotorCommand(pwmLeft, pwmRight);
         }
+        raisePen();
     }
 
     /** Draw a vertical line */
     public void drawVerticalLine(double startY, double endY, double x) {
+        dropPen();
         if (debug)System.out.println("drawVerticalLine");
         for (double y = startY; y < endY; y += 2) {
             double pwmLeft = calculatePWMMotor1(calculateThetaLeft(x, y));
             double pwmRight = calculatePWMMotor2(calculateThetaRight(x, y));
             writeMotorCommand(pwmLeft, pwmRight);
         }
+        raisePen();
     }
 
     /** Draw a generic line */
@@ -236,17 +251,24 @@ public class ArmController {
         m = rise / run;
         if (debug) System.out.println("m: " + m);
         double y = start.y;
+
+        dropPen();
+
         for (double x = start.x; x <= end.x; x++, y += m) {
             double pwmLeft = calculatePWMMotor1(calculateThetaLeft(x, y));
             double pwmRight = calculatePWMMotor2(calculateThetaRight(x, y));
             writeMotorCommand(pwmLeft, pwmRight);
         }
+
+        raisePen();
+
     }
 
     /** Draw a circle around center point. Accuracy tells us step size. */
     public void drawCircle(Cord center, double radius, double accuracy) {
+        dropPen();
         double angle, x, y, pwmLeft, pwmRight;
-        for (int i = 0; i < accuracy; i++) {
+        for (int i = 0; i <= accuracy; i++) {
             angle = i * Math.PI * 2 / accuracy;
             x = center.x + radius * cos(angle);
             y = center.y + radius * sin(angle);
@@ -254,11 +276,13 @@ public class ArmController {
             pwmRight = calculatePWMMotor2(calculateThetaRight(x, y));
             writeMotorCommand(pwmLeft, pwmRight);
         }
+        raisePen();
     }
 
     /** Draws a rectangle out of the two points, auto detects corners.
      * Draws ClockWise starting from top left corner. */
     public void drawRectangle(Cord topLeft, Cord botRight) {
+        dropPen();
         if (topLeft.x > botRight.x) topLeft.swapX(botRight);
         if (topLeft.y < botRight.y) topLeft.swapY(botRight);
         double x, y;
@@ -282,6 +306,7 @@ public class ArmController {
             double pwmRight = calculatePWMMotor2(calculateThetaRight(x, y));
             writeMotorCommand(pwmLeft, pwmRight);
         }
+        raisePen();
     }
 
     /** Outputs next command via PrintStream, will also output to console if debug = true */
@@ -291,19 +316,20 @@ public class ArmController {
     }
 
     /** Switches pen writing state depending on @param up. */
-    public void setPen(Boolean up) {
-        if (up)  penHeight = 1300;
-        else     penHeight = 1500;
-    }
+    public void raisePen() { penHeight = 1300; }
+    public void dropPen() { penHeight = 1500; }
 
     /** Draw Instructions */
-    public void drawInstructions (Queue<Instruction> instructions) {
+    public void drawInstructions (Queue<Instruction> instructions, int imgWid, int imgHei) {
+        UI.println(instructions.size() + " instructions are about to be printed.");
         if (instructions == null) return;
         Instruction instruction;
         while (!instructions.isEmpty()) {
             instruction = instructions.poll();
             // NOTE: We will need to do some sorcery to draw these x, y coordinates at a suitable location on the real canvas.
-            drawLine(instruction.start, instruction.end);
+//            UI.println(instruction.start + ", " + instruction.end);
+            Cord offset = new Cord (320-imgWid/2, 240-imgHei/2);
+            drawLine(instruction.start.add(offset), instruction.end.add(offset));
         }
     }
 

@@ -5,4 +5,8 @@ public class Instruction {
         this.start = start;
         this.end = end;
     }
+
+    public String toString() {
+        return start + " -> " + end;
+    }
 }

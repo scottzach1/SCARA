@@ -14,12 +14,16 @@ public class ImageManipulator {
     private int[][] imageData;
     private Color[][] image;
     public boolean gui, console, debug;
+    public static float LEFT = 15, TOP = 15, PX_SIZE = 1;
 
     public ImageManipulator(boolean gui, boolean console) {
         this.gui = gui;
         this.console = console;
         this.debug = false;
     }
+
+    public int getRows() { return  rows; }
+    public int getCols() { return  cols; }
 
     /** Slave for LoadImage method, @param Scanner, will return -1 if no +ve int was found.*/
     private int getNextScannerInt(Scanner sc) {
@@ -152,23 +156,25 @@ public class ImageManipulator {
     }
 
     /** Render the original image[][] on the display. gui must be enabled. */
-    public void renderImage(int left, int top, int pxSize) {
+    public void renderImage() {
         if (!gui || image == null) return;
         UI.clearGraphics();
+        UI.setDivider(0.0);
         UI.setImmediateRepaint(false);
 
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 UI.setColor(image[row][col]);
-                UI.fillRect(left + col * pxSize, top + row * pxSize, pxSize, pxSize);
+                UI.fillRect(LEFT + col * PX_SIZE, TOP + row * PX_SIZE, PX_SIZE, PX_SIZE);
             }
         }
         UI.repaintGraphics();
     }
     /** Render the new data extracted from image[][]. gui must be enabled. */
-    public void renderData(int left, int top, int pxSize) {
+    public void renderData() {
         if (!gui || image == null) return;
         UI.clearGraphics();
+        UI.setDivider(0.0);
         UI.setImmediateRepaint(false);
 
         for (int row = 0; row < rows; row++)
@@ -178,15 +184,32 @@ public class ImageManipulator {
                 else {
                     int intensity = imageData[row][col];
                     UI.setColor(new Color(intensity, intensity, intensity));
-                    UI.fillRect(left + col * pxSize, top + row * pxSize, pxSize, pxSize);
+                    UI.fillRect(LEFT + col * ImageManipulator.PX_SIZE, TOP + row * ImageManipulator.PX_SIZE, ImageManipulator.PX_SIZE, ImageManipulator.PX_SIZE);
                 }
 
         UI.repaintGraphics();
     }
 
+    public void renderInstructions(Queue<Instruction> instructions) {
+        UI.clearGraphics();
+        UI.setImmediateRepaint(true);
+
+        UI.println("Rendering " + instructions.size() + " instructions. Hopefully this works.");
+        UI.setColor(Color.black);
+        UI.fillRect(LEFT, TOP, imageData[0].length*PX_SIZE, imageData.length*PX_SIZE);
+        UI.setColor(Color.white);
+        while(!instructions.isEmpty()) {
+            Instruction instruction = instructions.poll();
+            UI.sleep(50);
+            UI.drawLine(LEFT + instruction.start.x*PX_SIZE, TOP + instruction.start.y*PX_SIZE, LEFT + instruction.end.x*PX_SIZE, TOP + instruction.end.y*PX_SIZE);
+        }
+    }
+
     /** Return a Queue of Instructions to draw image */
     public Queue<Instruction> getInstructions() {
         CannyTracer tracer = new CannyTracer();
-        return tracer.getInstructions(imageData);
+        Queue<Instruction>  instructions = tracer.getInstructions(imageData);
+        UI.println(instructions.size() + " instructions were found.");
+        return instructions;
     }
 }

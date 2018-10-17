@@ -3,6 +3,8 @@ import java.util.Queue;
 
 public class CannyTracer {
     private int[][] cannyMap;
+    private int startCol, startRow, currentRow, currentCol, endRow, endCol;
+    private int precision, thr;
     private Queue<Instruction> instructions = new ArrayDeque<>();
 
     /** Constructor, takes an int array as @param image */
@@ -11,39 +13,63 @@ public class CannyTracer {
     public Queue<Instruction> getInstructions(int[][] image) {
         if (image == null) return null;
         this.cannyMap = image;
-        cannyToInstructions(3, 100);
+        this.precision = 4;
+        this. thr = 100;
+        cannyToInstructions();
         return instructions;
     }
 
     /** Iterates over whole image,
      * converts detected lines into instructions containing start and end point.
-     * @param precision How long each instruction is.
-     * @param thr How sensitive our line algorythm is.
      */
-    public void cannyToInstructions(int precision, int thr) {
-        for (int row = 0; row < cannyMap.length; row++)
-            for (int col = 0; col < cannyMap[row].length; col++)
-                if (cannyMap[row][col] > thr)
-                    instructions.add(cannyRecursiveTrace(row, col, row, col, precision, thr));
+    public void cannyToInstructions() {
+        for (currentCol = 0; currentCol < cannyMap[0].length; currentCol++) {
+            for (currentRow = 0; currentRow < cannyMap.length; currentRow++) {
+
+                if (cannyMap[currentRow][currentCol] > thr) {
+                    startRow = currentRow;
+                    startCol = currentCol;
+                    endRow = currentRow;
+                    endCol = currentCol;
+                    instructions.add(cannyRecursiveTrace());
+                    String dir = findGreatestNeighbour(endRow, endCol);
+                    int r = 0;
+                    int c = 0;
+                    if (dir.startsWith("Top")) r--;
+                    else if (dir.startsWith("Bot")) r++;
+                    if (dir.startsWith("Lef")) c--;
+                    else if (dir.startsWith("Rig")) c++;
+                    cannyMap[endRow][endCol] = -1;
+                    if (cannyMap[endRow + r][endCol + c] > thr) {
+                        startRow = endRow + r;
+                        startCol = endCol + c;
+                        endRow = startRow;
+                        endCol = startCol;
+                        instructions.add(cannyRecursiveTrace());
+                    }
+                }
+            }
+        }
     }
 
     /** Slave method for cannyToInstructions */
-    private Instruction cannyRecursiveTrace(int startRow, int startCol, int row, int col, int precision, int thr) {
-        String dir = findGreatestNeighbour(row, col);
+    private Instruction cannyRecursiveTrace() {
+        String dir = findGreatestNeighbour(endRow, endCol);
         int r = 0; int c = 0;
         if (dir.startsWith("Top")) r--;
         else if (dir.startsWith("Bot")) r++;
         if (dir.startsWith("Lef")) c--;
         else if (dir.startsWith("Rig")) c++;
-        cannyMap[row][col] = -1;
-        if (Math.sqrt(Math.pow(startCol-col,2) + Math.pow(startRow-row,2)) < precision) {
-            if(cannyMap[row+r][col+c] > thr) {
-                cannyEraseGrid(row, col); // Been here now.
-                Instruction instruction = cannyRecursiveTrace(startRow, startCol, row+r, col+c, precision, thr);
+        cannyMap[endRow][endCol] = -1;
+        if (Math.sqrt(Math.pow(startCol-endCol,2) + Math.pow(startRow-endRow,2)) < precision) {
+            if(cannyMap[endRow+r][endCol+c] > thr) {
+                cannyEraseGrid(endRow, endCol); // Been here now.
+                endRow += r; endCol += c;
+                Instruction instruction = cannyRecursiveTrace();
                 if (instruction != null) return instruction;
             }
         }
-        return new Instruction(new Cord(startCol, startRow), new Cord(startCol, startRow));
+        return new Instruction(new Cord(startCol, startRow), new Cord(endCol, endRow));
     }
 
     /** Returns a string identifying the greatest value neighbour.
@@ -68,7 +94,7 @@ public class CannyTracer {
     /** Erases all touching pixels */
     private void cannyEraseGrid(int row, int col) {
         for (int r=-1; r<2; r++)
-            for (int c=-1; c<2; c++)
-                cannyMap[row+r][col+c] = -1;
+            for (int c=-1; c<2; c++){}
+//                cannyMap[row+r][col+c] = -1;
     }
 }

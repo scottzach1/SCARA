@@ -45,6 +45,14 @@ public class Cord {
         other.y = holder;
     }
 
+    public Cord add(Cord other) {
+        return new Cord (this.x + other.x, this.y + other.y);
+    }
+
+    public String toString() {
+        return this.x + " " + this.y;
+    }
+
     /** Returns Pythagoras Distance, c = root (a^2 + b^2) */
     public double getDistance() {
         return Math.sqrt(x*x + y*y);
