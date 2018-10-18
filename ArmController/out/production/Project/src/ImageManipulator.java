@@ -201,8 +201,7 @@ public class ImageManipulator {
     public void renderInstructions(Queue<Instruction> instructions) {
         UI.clearGraphics();
         UI.setImmediateRepaint(true);
-//        UI.setDivider(0.0);
-//        UI.println("Rendering " + instructions.size() + " instructions. Hopefully this works.");
+        UI.setDivider(0.0);
         UI.setColor(Color.black);
         UI.fillRect(LEFT, TOP, imageData[0].length*PX_SIZE, imageData.length*PX_SIZE);
         UI.setColor(Color.white);

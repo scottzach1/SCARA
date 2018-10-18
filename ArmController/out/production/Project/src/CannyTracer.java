@@ -17,8 +17,14 @@ public class  CannyTracer {
     }
 
     public Queue<Instruction> cannyTrace(int[][] imageData) {
-        this.cannyMap = imageData;
-            current = new Cord(0,0); start = new Cord(0, 0); end = new Cord(0, 0);
+//        this.cannyMap = new int[imageData.length][imageData[0].length];
+//        this.cannyMap = imageData.clone();
+        this.cannyMap = new int[imageData.length][imageData[0].length];
+        for (int row = 0; row < cannyMap.length; row++)
+            for (int col = 0; col < cannyMap[row].length; col++)
+                cannyMap[row][col] = imageData[row][col];
+
+        current = new Cord(0,0); start = new Cord(0, 0); end = new Cord(0, 0);
         for (current.x = 0; current.x < cannyMap[0].length; current.x++) {      // col
             for (current.y = 0; current.y < cannyMap.length; current.y++) {             // row
                     if (this.cannyMap[(int) current.y][(int) current.x] > thr) {
@@ -28,12 +34,10 @@ public class  CannyTracer {
                         travel.add(start);
                         int c = 0;
                         while (findGreatestNeighbour() && checkStraightDistanceFromLine()) { c++; }
-//                        UI.println(findGreatestNeighbour() + " " + checkStraight() + " " + c + " " + start.distanceFrom(end));
                         instructions.add(new Instruction(start, end));
                     }
                 }
             }
-//            UI.println("Done");
         fixInstructions();
         return instructions;
     }
@@ -79,7 +83,6 @@ public class  CannyTracer {
 
         if (maxVal < thr) return false; // No white neighbours were found.
 
-//        cannyMap[row + r][col + c] = -1; // Erase current location.
         cannyEraseGrid(row, col, 1);
 
         travel.add(end); // Add current location to travel list.
@@ -110,7 +113,6 @@ public class  CannyTracer {
         rise = end.y - start.y;
         run = end.x - start.x;
         m = rise / run;
-//        UI.println("m: " + m);
 
         double y = start.y;
         double maxDistance = 5;

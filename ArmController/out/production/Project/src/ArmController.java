@@ -1,7 +1,4 @@
 import ecs100.UI;
-import ecs100.UIFileChooser;
-
-import java.io.File;
 import java.io.PrintStream;
 import java.util.Queue;
 
@@ -57,11 +54,9 @@ public class ArmController {
         UI.addButton("Render Data", ()-> imageManipulator.renderData());
         UI.addButton("Draw Image", ()-> drawInstructions(imageManipulator.getInstructions(), imageManipulator.getCols(), imageManipulator.getRows()));
         UI.addButton("Render Instructions", ()-> imageManipulator.renderInstructions(imageManipulator.getInstructions()));
-        UI.addButton("Cheat", ()-> {
+        UI.addButton("Render SKYNET", ()-> {
             imageManipulator.loadImage("pixelSky.png");
             imageManipulator.imageToData();
-//            UI.setWindowSize(1000, 500);
-//            UI.setDivider(0.25);
             imageManipulator.renderInstructions(imageManipulator.getInstructions());
         });
         UI.addButton("Check Motor Calibration", this::calibrate);
@@ -328,7 +323,7 @@ public class ArmController {
 
     /** Draw Instructions */
     public void drawInstructions (Queue<Instruction> instructions, int imgWid, int imgHei) {
-        UI.println(instructions.size() + " instructions are about to be printed.");
+        UI.printMessage(instructions.size() + " instructions are about to be rendered.");
         if (instructions == null) return;
         Instruction instruction;
         while (!instructions.isEmpty()) {
