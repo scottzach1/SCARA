@@ -148,6 +148,7 @@ public class ImageManipulator {
         return output;
     }
 
+    /** For black line over white background image, no canny edge detection can compare with inverting the colors of the raw image */
     public void imageToData() {
         for (int row = 0; row < image.length; row++) {
             for (int col = 0; col < image[row].length; col++) {
@@ -198,6 +199,7 @@ public class ImageManipulator {
         UI.repaintGraphics();
     }
 
+    /** Render the instructions that the arm will take to draw the image */
     public void renderInstructions(Queue<Instruction> instructions) {
         UI.clearGraphics();
         UI.setImmediateRepaint(true);

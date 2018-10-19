@@ -2,6 +2,10 @@ public class Cord {
     public double x, y;
     public String desc;
 
+    /** Constructor, takes
+     * @param x value
+     * @param y value
+     */
     public  Cord(double x, double y) {
         this.x = x;
         this.y = y;
@@ -45,11 +49,15 @@ public class Cord {
         other.y = holder;
     }
 
+    /** Return a cord with the corresponding sum of each components */
     public Cord add(Cord other) {
         return new Cord (this.x + other.x, this.y + other.y);
     }
+
+    /** Return a cloned object that is stored seperately in the java vm */
     public Cord copy() { return  new Cord(this.x, this.y); }
 
+    /** Return a string containing the components of the object */
     public String toString() {
         return this.x + " " + this.y;
     }

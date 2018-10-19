@@ -1,4 +1,7 @@
 import ecs100.UI;
+import ecs100.UIFileChooser;
+
+import java.io.File;
 import java.io.PrintStream;
 import java.util.Queue;
 
@@ -26,7 +29,7 @@ public class ArmController {
 
     private ImageManipulator imageManipulator;
     private PrintStream stream;
-    private String fName = "i";
+    private String fName = "output.scara";
 
     public ArmController() {
         setupGUI();
@@ -49,14 +52,14 @@ public class ArmController {
         UI.initialise();
         UI.addButton("Load Image", imageManipulator::loadData);
         UI.addButton("Render Image", ()-> imageManipulator.renderImage());
-        UI.addButton("Edge Detection", () -> imageManipulator.edgeDetection(200));
+        UI.addButton("Edge Detection", () -> imageManipulator.edgeDetection(150));
         UI.addButton("Image to Data", () -> imageManipulator.imageToData());
         UI.addButton("Render Data", ()-> imageManipulator.renderData());
         UI.addButton("Draw Image", ()-> drawInstructions(imageManipulator.getInstructions(), imageManipulator.getCols(), imageManipulator.getRows()));
         UI.addButton("Render Instructions", ()-> imageManipulator.renderInstructions(imageManipulator.getInstructions()));
         UI.addButton("Render SKYNET", ()-> {
             UI.setDivider(0.0);
-            imageManipulator.loadImage("skynet.png");
+            imageManipulator.loadImage("img/skynet.png");
             imageManipulator.imageToData();
             imageManipulator.renderInstructions(imageManipulator.getInstructions());
         });
@@ -64,6 +67,7 @@ public class ArmController {
         UI.addButton("Draw Circle", this::selectCircle);
         UI.addButton("Draw Rectangle", this::selectRectangle);
         UI.addButton("Draw line", this::selectLine);
+        UI.addButton("Change Destination File", ()-> { stream.close(); fName = UIFileChooser.save(); setupGUI(); UI.printMessage("Output file changed to " + fName);});
         UI.addButton("Save", ()-> { stream.close(); UI.quit(); });
         if (this.console) UI.setDivider(0.5);
         else UI.setDivider(0);
