@@ -3,28 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8de88197-2230-4313-b281-5a73fd9f5102" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/ArmController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/ArmController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/CannyTracer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/CannyTracer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/Cord.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/Cord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/ImageManipulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/ImageManipulator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/Instruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/Instruction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/output.scara" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/output.scara" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/img/1-image-flower.ppm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/img/1-image-flower.ppm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/production/Project/img/1-image-flower.ppm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/img/1-image-flower.ppm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/img/1-image-flower.ppm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/pig.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/pingu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/production/Project/worm.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/src/ArmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/src/ArmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/src/CannyTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/src/CannyTracer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/src/Cord.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/src/Cord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/src/ImageManipulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/src/ImageManipulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/src/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/src/Instruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageManipulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageManipulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.scara" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +51,7 @@
     <session id="-1351219391">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="6" />
@@ -110,11 +90,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ArmController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="52" column="58" lean-forward="true" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
+            <state relative-caret-position="417">
+              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ImageManipulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+            <state relative-caret-position="460">
+              <caret line="94" column="6" selection-start-line="94" selection-start-column="6" selection-end-line="94" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getNextScannerInt#0;class#ImageManipulator#0" />
@@ -192,7 +172,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="762" />
     <option name="width" value="780" />
     <option name="height" value="830" />
@@ -228,7 +208,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539936970494" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539947498732" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/nalin" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -285,12 +265,12 @@
       <workItem from="1539908656202" duration="1459000" />
       <workItem from="1539918431691" duration="861000" />
       <workItem from="1539930745645" duration="1772000" />
-      <workItem from="1539936378592" duration="517000" />
+      <workItem from="1539936378592" duration="2270000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60499000" />
+    <option name="totallyTimeSpent" value="62252000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
@@ -305,7 +285,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2788145" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2788145" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991462" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -419,25 +399,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArmController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="52" column="58" lean-forward="true" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ImageManipulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+        <state relative-caret-position="460">
+          <caret line="94" column="6" selection-start-line="94" selection-start-column="6" selection-end-line="94" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNextScannerInt#0;class#ImageManipulator#0" />
             <element signature="method#getNextColour#0;class#ImageManipulator#0" />
             <element signature="method#loadPPM#0;class#ImageManipulator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
