@@ -2,6 +2,7 @@ import ecs100.UI;
 
 import java.util.*;
 
+/** Constructer */
 public class  CannyTracer {
     private int[][] cannyMap;
     private Cord start, current, end; // Cords use (x, y) or (col, row) ## Important to note!
@@ -16,6 +17,7 @@ public class  CannyTracer {
         travel = new ArrayList<>();
     }
 
+    /* Return an queue of instructions to draw the canny map that can be interpreted by the robotic arm. */
     public Queue<Instruction> cannyTrace(int[][] imageData) {
         this.cannyMap = new int[imageData.length][imageData[0].length]; // Clone array, .clone() wasn't working.
         for (int row = 0; row < cannyMap.length; row++)
@@ -40,6 +42,7 @@ public class  CannyTracer {
         return instructions;
     }
 
+    /** Generate a linked loop of all the instructions in a more move efficient manor. */
     private void fixInstructions() {
         Set<Instruction> set = new HashSet<>();
         Stack<Instruction> stack = new Stack<>();
@@ -89,6 +92,7 @@ public class  CannyTracer {
         return true; // Assure safe to continue.
     }
 
+    /** Determine straightness of a line by measuring the travel distance compared with the distance between start and end. */
     public boolean checkStraightTotalDistance() {
         double totalDistance = 0;
 
@@ -100,6 +104,7 @@ public class  CannyTracer {
         return (totalDistance <= start.distanceFrom(end)*1.08);
     }
 
+    /** Determine the straightness of a line by the distance from the center of the points that make up the line. */
     public boolean checkStraightDistanceFromLine() {
         int misses = 0;
 

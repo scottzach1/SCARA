@@ -48,8 +48,12 @@ public class ImageManipulator {
         String fileName = UIFileChooser.open();
         if (console && gui) UI.println(fileName);
         if (debug) System.out.println(fileName);
-        if (fileName.endsWith(".ppm")) return loadPPM(fileName);
-        else return loadImage(fileName);
+        boolean success;
+        if (fileName.endsWith(".ppm")) success = loadPPM(fileName);
+        else success = loadImage(fileName);
+        if (success) UI.printMessage("Loaded " + fileName + " successfully.");
+        else UI.printMessage("Failed to load fileName");
+        return success;
     }
 
     /** Loads a ppm image to the program. Takes @param fName and returns true if successfully loaded */
@@ -148,6 +152,7 @@ public class ImageManipulator {
         return output;
     }
 
+    /** For black line over white background image, no canny edge detection can compare with inverting the colors of the raw image */
     public void imageToData() {
         for (int row = 0; row < image.length; row++) {
             for (int col = 0; col < image[row].length; col++) {
@@ -198,6 +203,7 @@ public class ImageManipulator {
         UI.repaintGraphics();
     }
 
+    /** Render the instructions that the arm will take to draw the image */
     public void renderInstructions(Queue<Instruction> instructions) {
         UI.clearGraphics();
         UI.setImmediateRepaint(true);

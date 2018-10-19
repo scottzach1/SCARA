@@ -162,16 +162,17 @@ public class ArmController {
 
         if (gui) {
             UI.setDivider(1.0);
+            UI.println("------------------------------------------------------------------------\n");
             double x = UI.askInt("Enter the x position of the circle center: ");
             double y = UI.askInt("Enter the y position of the circle center: ");
             double radius = UI.askInt("Enter the circle radius: ");
             double accuracy = UI.askInt("Enter the desired step count: ");
-
             Cord circlePos = new Cord(x, y);
 
             drawCircle(circlePos, radius, accuracy);
 
             UI.println("Outputted file to: " + fName);
+            UI.println("\n------------------------------------------------------------------------");
         }
 
     }
@@ -181,18 +182,19 @@ public class ArmController {
 
         if (gui) {
             UI.setDivider(1.0);
+            UI.println("------------------------------------------------------------------------\n");
             double x1 = UI.askInt("Enter the x position of the top left corner: ");
             double y1 = UI.askInt("Enter the y position of the top left corner: ");
 
             double x2 = UI.askInt("Enter the x position of the bottom right corner: ");
             double y2 = UI.askInt("Enter the y position of the bottom right corner: ");
-
             Cord topLeft = new Cord(x1, y1);
             Cord bottomRight = new Cord(x2, y2);
 
             drawRectangle(topLeft, bottomRight);
 
             UI.println("Outputted file to: " + fName);
+            UI.println("\n------------------------------------------------------------------------");
         }
 
     }
@@ -202,18 +204,19 @@ public class ArmController {
 
         if (gui) {
             UI.setDivider(1.0);
+            UI.println("------------------------------------------------------------------------\n");
             double x1 = UI.askInt("Enter the x position of the start point: ");
             double y1 = UI.askInt("Enter the y position of the start point: ");
 
             double x2 = UI.askInt("Enter the x position of the end point: ");
             double y2 = UI.askInt("Enter the y position of the end point: ");
-
             Cord start = new Cord(x1, y1);
             Cord end = new Cord(x2, y2);
 
             drawLine(start, end);
 
             UI.println("Outputted file to: " + fName);
+            UI.println("\n------------------------------------------------------------------------");
         }
 
     }
