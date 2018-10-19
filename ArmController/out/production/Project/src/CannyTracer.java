@@ -17,9 +17,7 @@ public class  CannyTracer {
     }
 
     public Queue<Instruction> cannyTrace(int[][] imageData) {
-//        this.cannyMap = new int[imageData.length][imageData[0].length];
-//        this.cannyMap = imageData.clone();
-        this.cannyMap = new int[imageData.length][imageData[0].length];
+        this.cannyMap = new int[imageData.length][imageData[0].length]; // Clone array, .clone() wasn't working.
         for (int row = 0; row < cannyMap.length; row++)
             for (int col = 0; col < cannyMap[row].length; col++)
                 cannyMap[row][col] = imageData[row][col];

@@ -55,7 +55,8 @@ public class ArmController {
         UI.addButton("Draw Image", ()-> drawInstructions(imageManipulator.getInstructions(), imageManipulator.getCols(), imageManipulator.getRows()));
         UI.addButton("Render Instructions", ()-> imageManipulator.renderInstructions(imageManipulator.getInstructions()));
         UI.addButton("Render SKYNET", ()-> {
-            imageManipulator.loadImage("pixelSky.png");
+            UI.setDivider(0.0);
+            imageManipulator.loadImage("skynet.png");
             imageManipulator.imageToData();
             imageManipulator.renderInstructions(imageManipulator.getInstructions());
         });

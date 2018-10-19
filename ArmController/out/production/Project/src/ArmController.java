@@ -55,7 +55,7 @@ public class ArmController {
         UI.addButton("Draw Image", ()-> drawInstructions(imageManipulator.getInstructions(), imageManipulator.getCols(), imageManipulator.getRows()));
         UI.addButton("Render Instructions", ()-> imageManipulator.renderInstructions(imageManipulator.getInstructions()));
         UI.addButton("Render SKYNET", ()-> {
-            imageManipulator.loadImage("pixelSky.png");
+            imageManipulator.loadImage("skynet.png");
             imageManipulator.imageToData();
             imageManipulator.renderInstructions(imageManipulator.getInstructions());
         });
@@ -323,16 +323,15 @@ public class ArmController {
 
     /** Draw Instructions */
     public void drawInstructions (Queue<Instruction> instructions, int imgWid, int imgHei) {
-        UI.printMessage(instructions.size() + " instructions are about to be rendered.");
+        int size = instructions.size();
         if (instructions == null) return;
         Instruction instruction;
         while (!instructions.isEmpty()) {
             instruction = instructions.poll();
-            // NOTE: We will need to do some sorcery to draw these x, y coordinates at a suitable location on the real canvas.
-//            UI.println(instruction.start + ", " + instruction.end);
             Cord offset = new Cord (320-imgWid/2, 240-imgHei/2);
             drawLine(instruction.start.add(offset), instruction.end.add(offset));
         }
+        UI.printMessage(size + " instructions were rendered successfully.");
     }
 
     public static void main(String[] args) { ArmController Arm = new ArmController(); }
